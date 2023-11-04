@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { FiSun } from "react-icons/fi";
+import { BsCloudMoon } from "react-icons/bs";
+import NavigationLinks from "./navComponents/NavigationLinks";
 
 // Navigation links for the menu
-const navigationLinks = [
-  { to: "/", label: "Home" },
-  { to: "/allFoodItems", label: "All Food Items" },
-  { to: "/blog", label: "Blog" },
-];
 const Navbar = () => {
   // State for controlling the mobile menu icon
   const [menuIcon, setMenuIcon] = useState(false);
+  const [darkMod, setDarkMod] = useState(false);
   return (
     <header className="max-w-7xl mx-auto bg-gray-300 text-black w-full duration-200 ease-in fixed top-0 left-0 right-0 z-10">
       <nav className="h-[4.3rem] flex justify-between items-center p-3">
-        <div>
+        <div className="lg:flex-1">
           <Link to="/">
             <span className="font-bold text-2xl md:text-xl lg:text-2xl uppercase">
               Navbar
@@ -23,15 +22,24 @@ const Navbar = () => {
         </div>
 
         {/* large screen navigation */}
-        <ul className="hidden md:flex gap-4 font-semibold text-lg ">
+        <ul className="hidden md:flex gap-4 font-semibold text-lg lg:flex-1 lg:justify-center">
+          <NavigationLinks />
+        </ul>
+        {/* <ul className="hidden md:flex gap-4 font-semibold text-lg ">
           {navigationLinks.map((link, index) => (
             <li className="hover:text-green-500" key={index}>
               <NavLink to={link.to}>{link.label}</NavLink>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-8 items-center lg:flex-1 lg:justify-end">
+          <span
+            className="cursor-pointer text-xl"
+            onClick={() => setDarkMod(!darkMod)}
+          >
+            {darkMod ? <FiSun /> : <BsCloudMoon />}
+          </span>
           <Link
             to="/login"
             className="bg-yellow-300 hover:bg-yellow-400 rounded-full py-2 px-8 uppercase font-semibold"
@@ -59,11 +67,7 @@ const Navbar = () => {
         >
           {/* Mobile screen navigation links */}
           <ul className="flex flex-col gap-3 mt-2 font-semibold text-lg ">
-            {navigationLinks.map((link, index) => (
-              <li className="hover:text-green-500" key={index}>
-                <NavLink to={link.to}>{link.label}</NavLink>
-              </li>
-            ))}
+            <NavigationLinks />
             <Link
               to="/login"
               className="bg-yellow-300 hover:bg-yellow-400 rounded-full py-2 px-8 uppercase font-semibold"
