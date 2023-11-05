@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { FiSun } from "react-icons/fi";
@@ -6,28 +6,14 @@ import { BsCloudMoon } from "react-icons/bs";
 import NavigationLinks from "./navComponents/NavigationLinks";
 import logo from "../../assets/Restaurant.svg";
 import NavbarBtn from "./navComponents/NavbarBtn";
+import useModeTheme from "../../hooks/useModeTheme";
 
 // Navigation links for the menu
 const Navbar = () => {
   // State for controlling the mobile menu icon
   const [menuIcon, setMenuIcon] = useState(false);
-  const [modeIcon, setModeIcon] = useState(false);
-  const [mode, setMode] = useState("light");
 
-  const changeTheme = () => {
-    const html = document.documentElement;
-    if (mode == "light") {
-      html.classList.remove("light");
-      html.classList.add("dark");
-      setMode("dark");
-      setModeIcon(!modeIcon);
-    } else {
-      html.classList.remove("dark");
-      html.classList.add("light");
-      setMode("light");
-      setModeIcon(!modeIcon);
-    }
-  };
+  const { changeTheme, modeIcon } = useModeTheme();
 
   return (
     <header className="px-[0.375rem] xl:px-0 w-full duration-200 ease-in sticky top-2 left-0 right-0">
