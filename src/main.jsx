@@ -6,7 +6,7 @@ import Routes from "./routes/Routes.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="bg-[#ffffff78] dark:bg-[#252836]">
+    <div className="bg-slate-50 dark:bg-[#252836]">
       <RouterProvider router={Routes} />
     </div>
   </React.StrictMode>

@@ -19,7 +19,7 @@ const NavbarBtn = () => {
 
       <Link
         to="/registration"
-        className="border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-lg"
+        className="border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-lg hover:scale-105 transition-all duration-200 ease-in"
       >
         sign Up
       </Link>
