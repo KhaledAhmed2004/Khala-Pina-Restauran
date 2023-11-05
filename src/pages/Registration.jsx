@@ -3,8 +3,8 @@ import img from "../assets/authImage.png";
 import { FcGoogle } from "react-icons/fc";
 const Registration = () => {
   return (
-    <div className="md:h-[700px] my-5 md:my-0 flex justify-center items-center">
-      <div className="bg-green-100 h-[450px] md:h-[670px] my-16 w-[80%] mx-auto flex rounded-3xl">
+    <div className="md:h-[720px] my-5 md:my-0 flex justify-center items-center">
+      <div className="bg-green-100 h-[650px] md:h-[690px]  w-[80%] mx-auto flex rounded-3xl">
         <div className="flex-1 h-full p-5 md:p-10 space-y-4">
           <h2 className="text-4xl md:text-5xl font-semibold">Registration</h2>
           <p className="font-light">
