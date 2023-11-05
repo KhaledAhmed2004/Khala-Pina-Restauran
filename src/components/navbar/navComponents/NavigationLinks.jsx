@@ -11,7 +11,7 @@ const NavigationLinks = () => {
   return (
     <>
       {navigationLinks.map((link, index) => (
-        <li className="hover:text-amber-600" key={index}>
+        <li className="hover:text-amber-600 dark:text-white" key={index}>
           {/* <NavLink to={link.to}>{link.label}</NavLink> */}
           <NavLink
             to={link.to}

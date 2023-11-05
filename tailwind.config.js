@@ -8,5 +8,5 @@ export default {
       jost: ["Jost", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
