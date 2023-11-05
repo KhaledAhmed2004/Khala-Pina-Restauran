@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import img from "../assets/authImage.png";
 import { FcGoogle } from "react-icons/fc";
+import useAuth from "../hooks/useAuth";
 const Registration = () => {
+  const { createUser, user } = useAuth();
+  console.log(user);
   return (
     <div className="md:h-[720px] my-5 md:my-0 flex justify-center items-center">
       <div className="bg-green-100 h-[650px] md:h-[690px]  w-[80%] mx-auto flex rounded-3xl">
