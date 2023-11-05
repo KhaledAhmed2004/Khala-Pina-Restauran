@@ -10,10 +10,17 @@ const navigationLinks = [
 const NavigationLinks = () => {
   return (
     <>
-
       {navigationLinks.map((link, index) => (
-        <li className="hover:text-green-500" key={index}>
-          <NavLink to={link.to}>{link.label}</NavLink>
+        <li className="hover:text-amber-600" key={index}>
+          {/* <NavLink to={link.to}>{link.label}</NavLink> */}
+          <NavLink
+            to={link.to}
+            className={({ isActive }) =>
+              isActive ? "text-[#f2a64d] underline underline-offset-2" : ""
+            }
+          >
+            {link.label}
+          </NavLink>
         </li>
       ))}
     </>
