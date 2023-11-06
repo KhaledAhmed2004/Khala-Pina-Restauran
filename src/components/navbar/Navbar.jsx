@@ -43,7 +43,7 @@ const Navbar = () => {
           onClick={() => setMenuIcon(!menuIcon)}
           className="flex md:hidden text-2xl dark:text-white"
         >
-          {menuIcon ? <AiOutlineMenu /> : <AiOutlineClose />}
+          {menuIcon ? <AiOutlineClose /> : <AiOutlineMenu />}
         </div>
         {/* Mobile screen navbar */}
         <div
