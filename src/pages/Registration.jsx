@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -36,10 +37,17 @@ const Registration = () => {
       });
     } else {
       try {
-        await createUser(email, password);
+        const result = await createUser(email, password);
+        await updateProfile(result.user, {
+          displayName: name,
+          photoURL: url,
+        });
+
+        console.log("Profile updated successfully");
         toast.success("Registration Successful", { id: toastId });
         navigate("/");
       } catch (error) {
+        console.error("Error updating profile:", error);
         toast.error(`Registration failed: ${error.code}`, { id: toastId });
       }
     }

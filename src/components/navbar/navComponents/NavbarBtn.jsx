@@ -24,7 +24,13 @@ const NavbarBtn = () => {
           >
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL} />
+                <img
+                  src={
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://i.ibb.co/vcQZhpc/1921098.png"
+                  }
+                />
               </div>
             </label>
             {showProfile && (
