@@ -2,7 +2,22 @@ import { Link } from "react-router-dom";
 import img from "../assets/authImage.png";
 import { PiHandWaving } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 const Login = () => {
+  const { loginWithEmail } = useAuth();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await loginWithEmail(email, password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="md:h-[630px] my-5 md:my-0 flex justify-center items-center">
       <div className="bg-green-100 h-[500px] md:h-[600px] w-[80%] mx-auto flex rounded-3xl">
@@ -13,7 +28,7 @@ const Login = () => {
           <p className="font-light">
             Enter the information you entered while registering.
           </p>
-          <form className="w-full">
+          <form onSubmit={handleSubmit} className="w-full">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email Address</span>
@@ -21,6 +36,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
+                onBlur={(e) => setEmail(e.target.value)}
                 placeholder="example@gmail.com"
                 className="input input-bordered"
                 required
@@ -33,6 +49,7 @@ const Login = () => {
               <input
                 type="password"
                 name="password"
+                onBlur={(e) => setPassword(e.target.value)}
                 placeholder="Password"
                 className="input input-bordered"
                 required
@@ -47,10 +64,7 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <button
-            to="/registration"
-            className="flex justify-center hover:scale-105 transition-all duration-200 ease-in mt-5 border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-2xl w-full"
-          >
+          <button className="flex justify-center hover:scale-105 transition-all duration-200 ease-in mt-5 border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-2xl w-full">
             <FcGoogle />
           </button>
           <p className="flex justify-center gap-1">
