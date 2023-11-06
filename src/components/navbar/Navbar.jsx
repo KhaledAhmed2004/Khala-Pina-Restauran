@@ -16,7 +16,7 @@ const Navbar = () => {
   const { changeTheme, modeIcon } = useModeTheme();
 
   return (
-    <header className="px-[0.375rem] xl:px-0 w-full duration-200 ease-in sticky top-2 left-0 right-0">
+    <header className="px-[0.375rem] xl:px-0 w-full duration-200 ease-in sticky top-2 left-0 right-0 z-10">
       <nav className="h-[4.3rem] flex justify-between items-center px-6 rounded-tl-[45px] rounded-bl-[25px] rounded-tr-[40px] rounded-br-[25px] border-[2px] dark:border-none border-[#dddddd] bg-white dark:bg-[#301934] text-[#2f2f2f]">
         <div className="lg:flex-1 h-full justify-center">
           <Link to="/">
