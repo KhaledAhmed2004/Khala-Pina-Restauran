@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from "../assets/authImage.png";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const Registration = () => {
-  const { createUser, user } = useAuth();
+  const navigate = useNavigate();
+  const { createUser, loginWithGoogle } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,10 +16,32 @@ const Registration = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      await createUser(email, password);
-    } catch (error) {
-      console.log("Error creating user:", error);
+    const toastId = toast.loading("Registration in progress");
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters", { id: toastId });
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter", {
+        id: toastId,
+      });
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter", {
+        id: toastId,
+      });
+    } else if (!/\d/.test(password)) {
+      toast.error("Password must contain at least one digit", { id: toastId });
+    } else if (!/[\W_]/.test(password)) {
+      toast.error("Password must contain at least one special character", {
+        id: toastId,
+      });
+    } else {
+      try {
+        await createUser(email, password);
+        toast.success("Registration Successful", { id: toastId });
+        navigate("/");
+      } catch (error) {
+        toast.error(`Registration failed: ${error.code}`, { id: toastId });
+      }
     }
   };
 
@@ -90,7 +114,10 @@ const Registration = () => {
               </button>
             </div>
           </form>
-          <button className="flex justify-center hover:scale-105 transition-all duration-200 ease-in mt-5 border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-2xl w-full">
+          <button
+            onClick={loginWithGoogle}
+            className="flex justify-center hover:scale-105 transition-all duration-200 ease-in mt-5 border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-2xl w-full"
+          >
             <FcGoogle />
           </button>
           <p className="flex justify-center gap-1">

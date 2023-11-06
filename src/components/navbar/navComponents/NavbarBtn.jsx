@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const NavbarBtn = () => {
   const { user, logout } = useAuth();
   console.log(user);
+  const [showProfile, setShowProfile] = useState(false);
   return (
     <>
       {/* <Link
@@ -13,12 +15,43 @@ const NavbarBtn = () => {
             Login
           </Link> */}
       {user?.email ? (
-        <button
-          onClick={logout}
-          className="bg-green-500 text-white	 hover:bg-green-600 rounded-full py-2 px-8 uppercase font-semibold"
-        >
-          Logout
-        </button>
+        <>
+          <div
+            onClick={() => {
+              setShowProfile(!showProfile);
+            }}
+            className="dropdown dropdown-end"
+          >
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user?.photoURL} />
+              </div>
+            </label>
+            {showProfile && (
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box space-y-3"
+              >
+                <li>{user?.displayName}</li>
+                <li>{user?.email}</li>
+                <li>
+                  <button
+                    onClick={logout}
+                    className="bg-green-500 text-white	 hover:bg-green-600 rounded-full py-2 px-8 uppercase font-semibold flex justify-center"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
+          {/* <button
+            onClick={logout}
+            className="bg-green-500 text-white	 hover:bg-green-600 rounded-full py-2 px-8 uppercase font-semibold"
+          >
+            Logout
+          </button> */}
+        </>
       ) : (
         <>
           <Link
