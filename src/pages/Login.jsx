@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../assets/authImage.png";
 import { PiHandWaving } from "react-icons/pi";
 import { FcGoogle } from "react-icons/fc";
@@ -6,10 +6,21 @@ import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 const Login = () => {
+  const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const { loginWithEmail, loginWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate(location?.state ? location?.state : "/");
+    } catch (error) {
+      console.error("Google login error:", error);
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +28,7 @@ const Login = () => {
     try {
       await loginWithEmail(email, password);
       toast.success("Logged Successfully!", { id: toastId });
-      navigate("/");
+      navigate(location?.state ? location?.state : "/");
     } catch (error) {
       toast.error(`Logging failed: ${error.code}`, { id: toastId });
     }
@@ -70,7 +81,7 @@ const Login = () => {
             </div>
           </form>
           <button
-            onClick={loginWithGoogle}
+            onClick={handleLogin}
             className="flex justify-center hover:scale-105 transition-all duration-200 ease-in mt-5 border-2 dark:text-white border-green-500 hover:border-green-800 rounded-full py-2 px-6 font-medium uppercase text-2xl w-full"
           >
             <FcGoogle />

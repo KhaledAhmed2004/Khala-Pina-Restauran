@@ -42,7 +42,14 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const values = { createUser, loginWithEmail, user, logout, loginWithGoogle };
+  const values = {
+    createUser,
+    loginWithEmail,
+    user,
+    logout,
+    loginWithGoogle,
+    isLoading,
+  };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 

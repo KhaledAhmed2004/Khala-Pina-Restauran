@@ -5,6 +5,7 @@ import AllFoodItems from "./../pages/AllFoodItems";
 import Blog from "./../pages/Blog";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routes = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
-        element: <AllFoodItems></AllFoodItems>,
+        element: (
+          <PrivateRoutes>
+            <AllFoodItems></AllFoodItems>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/blog",

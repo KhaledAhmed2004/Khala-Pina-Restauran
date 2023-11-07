@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import iceCream from "../../assets/iceCream.jpg";
 import { MdTableBar } from "react-icons/md";
 import { BiFoodMenu } from "react-icons/bi";
 
