@@ -6,10 +6,10 @@ const Banner = () => {
   return (
     <div className="flex flex-col md:flex-row h-[580px]  md:p-5 my-8 gap-5 lg:gap-0">
       <div className="md:w-[55%] lg:w-[60%] space-y-3 md:space-y-7 px-6 lg:px-8 flex flex-col justify-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-center md:text-left">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-center md:text-left dark:text-white">
           We are always here to serve you.
         </h1>
-        <p>
+        <p className="dark:text-white">
           This is a type of restaurant that typically serves delectable meals
           and refreshing beverages, complemented by delightful offerings such as
           baked goods or tantalizing snacks.
