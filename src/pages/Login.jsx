@@ -7,7 +7,6 @@ import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 const Login = () => {
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const { loginWithEmail, loginWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
