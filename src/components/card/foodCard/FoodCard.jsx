@@ -24,7 +24,7 @@ const FoodCard = () => {
           after:absolute after:w-6 after:h-6 after:rounded-full after:shadow-[-10px_10px_0_#fee4cb] after:right-[-25px] after:bottom-0 after:bg-transparent
         "
         >
-          <span className="relative bg-white p-3 my-[15px] mx-[15px] block rounded-xl font-semibold text-center text-[#2f2f2f] hover:scale-105 duration-200">
+          <span className="relative bg-white p-3 my-[15px] mx-[15px] block rounded-xl font-semibold text-center text-[#2f2f2f] hover:scale-[1.07] duration-200">
             $100
           </span>
         </div>
@@ -33,6 +33,7 @@ const FoodCard = () => {
           <h1 className="text-lg text-[#626262] font-normal ml-1">
             Italian Cuisine
           </h1>
+          
           <h1 className=" text-2xl text-[#2f2f2f] font-semibold ml-1">Pizza</h1>
           <h1 className=" text-xl text-[#fe8109] font-semibold ml-1 flex items-center">
             <AiFillStar />

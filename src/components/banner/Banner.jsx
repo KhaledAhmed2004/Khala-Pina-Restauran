@@ -26,7 +26,7 @@ const Banner = () => {
           </Link>
         </div>
       </div>
-      <div className="grid h-full md:w-[40%] grid-cols-12 grid-rows-6 gap-4 px-6 md:px-0">
+      <div className="grid h-full md:w-[40%] grid-cols-12 grid-rows-6 gap-5 px-6 md:px-0">
         <div className="col-span-6 row-span-3 rounded-xl bg-[url('https://i.ibb.co/G0MBkfW/chad-montano-Mq-T0asuo-Ic-U-unsplash.jpg')] bg-cover bg-center bg-no-repeat hover:translate-y-[-15px] duration-200 hover:shadow-xl"></div>
 
         <div className="col-start-7 col-end-12 row-start-2 row-end-4 rounded-xl bg-[url('https://i.ibb.co/gt5mBHh/courtney-cook-xt-Vj-WVCi-E-U-unsplash.jpg')] bg-cover bg-center bg-no-repeat hover:translate-y-[-10px] duration-200 hover:shadow-xl"></div>
