@@ -12,15 +12,15 @@ const Footer = () => {
         <p>
           Khala Pina Restaurant Ltd.
           <br />
-          Providing best service since 1992
+          Leading Restaurant since 1992
         </p>
       </aside>
       <nav>
         <header className="footer-title">Services</header>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <a className="link link-hover">Home</a>
+        <a className="link link-hover">All Items</a>
+        <a className="link link-hover">Blog</a>
+        <a className="link link-hover">Login</a>
       </nav>
       <nav>
         <header className="footer-title">Company</header>

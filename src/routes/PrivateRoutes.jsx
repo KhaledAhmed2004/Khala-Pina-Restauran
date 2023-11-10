@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Lottie from "lottie-react";
 // import animationLoading from "../assets/loading.json";
-import food from "../assets/food.json";
+import foodAnimation from "../assets/food.json";
 
 const PrivateRoutes = ({ children }) => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const PrivateRoutes = ({ children }) => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Lottie animationData={food} />
+        <Lottie animationData={foodAnimation} />
         {/* <Lottie animationData={animationLoading} /> */}
       </div>
     );

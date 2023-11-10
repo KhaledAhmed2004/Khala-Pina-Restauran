@@ -20,7 +20,7 @@ const Testimonial = () => {
   return (
     <>
       <h1 className="text-6xl font-semibold text-center mb-8">Testimonial</h1>
-      <Marquee pauseOnClick={true} speed={30} style={{ marginLeft: "20px" }}>
+      <Marquee pauseOnClick={true} speed={30}>
         <div className="flex gap-5">
           {data?.map((testimonial) => (
             <TestimonialCard
