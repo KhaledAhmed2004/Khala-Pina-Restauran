@@ -3,11 +3,12 @@ import { FcViewDetails } from "react-icons/fc";
 import { AiFillStar } from "react-icons/ai";
 
 const FoodCard = ({ topFood }) => {
-  const { foodName, rating, foodCategory, price } = topFood;
+  const { _id, foodName, rating, foodCategory, price, foodImage } = topFood;
   return (
     <div className="relative w-[320px] h-[420px] flex flex-col justify-between">
       <div
-        className={` relative w-full h-[240px] bg-red-600 rounded-xl bg-[url('https://i.ibb.co/G0MBkfW/chad-montano-Mq-T0asuo-Ic-U-unsplash.jpg')] bg-cover bg-center  
+        style={{ backgroundImage: `url(${foodImage})` }}
+        className={` relative w-full h-[240px] bg-red-600 rounded-xl  bg-cover bg-center  
         before:absolute before:w-5 before:h-6 before:bg-transparent before:rounded-full before:shadow-[-10px_10px_0_#fff] before:left-[50%] before:bottom-0
 
         after:absolute after:w-6 after:h-6 after:rounded-full after:shadow-[-10px_10px_0_#fff] after:left-0 after:bottom-[70px] after:hover:bottom-[55px] after:bg-transparent after:duration-200
@@ -42,7 +43,10 @@ const FoodCard = ({ topFood }) => {
             <AiFillStar />
             <span className="text-lg font-medium">{rating}</span>
           </h1>
-          <Link className="mt-2 bg-green-500 dark:bg-[#ff7a00] transition-all duration-150 ease-in hover:scale-105 dark:hover:bg-[#ea9839] text-white hover:bg-green-600 rounded-full py-2 px-6 uppercase text-lg font-medium flex items-center justify-center gap-2">
+          <Link
+            to={`/food/${_id}`}
+            className="mt-2 bg-green-500 dark:bg-[#ff7a00] transition-all duration-150 ease-in hover:scale-105 dark:hover:bg-[#ea9839] text-white hover:bg-green-600 rounded-full py-2 px-6 uppercase text-lg font-medium flex items-center justify-center gap-2"
+          >
             <FcViewDetails /> View Details
           </Link>
         </div>

@@ -11,7 +11,8 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const axios = useAxios();
-  const { loginWithEmail, loginWithGoogle } = useAuth();
+  const { loginWithEmail, loginWithGoogle, logout, user } = useAuth();
+  console.log(user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,8 +35,12 @@ const Login = () => {
         email: user.user.email,
       });
       console.log(response);
-      toast.success("Logged Successfully!", { id: toastId });
-      navigate(location?.state ? location?.state : "/");
+      if (response?.data?.success) {
+        toast.success("Logged Successfully!", { id: toastId });
+        navigate(location?.state ? location?.state : "/");
+      } else {
+        logout();
+      }
     } catch (error) {
       toast.error(`Logging failed: ${error.code}`, { id: toastId });
     }

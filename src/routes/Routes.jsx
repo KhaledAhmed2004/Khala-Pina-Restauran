@@ -6,6 +6,7 @@ import Blog from "./../pages/Blog";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import PrivateRoutes from "./PrivateRoutes";
+import Food from "../pages/Food";
 
 const Routes = createBrowserRouter([
   {
@@ -35,6 +36,12 @@ const Routes = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/food/:_id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/food/${params._id}`),
+        element: <Food></Food>,
       },
     ],
   },
