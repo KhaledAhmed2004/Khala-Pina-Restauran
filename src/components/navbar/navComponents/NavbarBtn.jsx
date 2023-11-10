@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const NavbarBtn = () => {
   const { user, logout } = useAuth();
-  console.log(user);
+  // console.log(user);
   const [showProfile, setShowProfile] = useState(false);
   return (
     <>

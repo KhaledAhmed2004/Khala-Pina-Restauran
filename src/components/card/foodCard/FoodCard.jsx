@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { FcViewDetails } from "react-icons/fc";
 import { AiFillStar } from "react-icons/ai";
 
-const FoodCard = () => {
+const FoodCard = ({ topFood }) => {
+  const { foodName, rating, foodCategory, price } = topFood;
   return (
     <div className="relative w-[320px] h-[420px] flex flex-col justify-between">
       <div
@@ -25,19 +26,21 @@ const FoodCard = () => {
         "
         >
           <span className="relative bg-white p-3 my-[15px] mx-[15px] block rounded-xl font-semibold text-center text-[#2f2f2f] hover:scale-[1.07] duration-200">
-            $100
+            {`$ ${price}`}
           </span>
         </div>
 
         <div className="flex flex-col">
           <h1 className="text-lg text-[#626262] font-normal ml-1">
-            Italian Cuisine
+            {foodCategory}
           </h1>
-          
-          <h1 className=" text-2xl text-[#2f2f2f] font-semibold ml-1">Pizza</h1>
+
+          <h1 className=" text-2xl text-[#2f2f2f] font-semibold ml-1">
+            {foodName}
+          </h1>
           <h1 className=" text-xl text-[#fe8109] font-semibold ml-1 flex items-center">
             <AiFillStar />
-            <span className="text-lg font-medium">4.5</span>
+            <span className="text-lg font-medium">{rating}</span>
           </h1>
           <Link className="mt-2 bg-green-500 dark:bg-[#ff7a00] transition-all duration-150 ease-in hover:scale-105 dark:hover:bg-[#ea9839] text-white hover:bg-green-600 rounded-full py-2 px-6 uppercase text-lg font-medium flex items-center justify-center gap-2">
             <FcViewDetails /> View Details

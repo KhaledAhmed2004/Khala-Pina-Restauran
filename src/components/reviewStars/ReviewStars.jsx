@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
-const ReviewStars = () => {
+const ReviewStars = ({rating}) => {
   const [value, setValue] = React.useState(3.4);
 
   return (
@@ -13,7 +13,7 @@ const ReviewStars = () => {
       }}
     >
       {/* <Rating name="read-only" value={value} readOnly /> */}
-      <Rating name="half-rating-read" value={value} precision={0.5} readOnly />
+      <Rating name="half-rating-read" value={rating} precision={0.5} readOnly />
     </Box>
   );
 };

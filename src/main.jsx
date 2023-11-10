@@ -5,14 +5,19 @@ import { RouterProvider } from "react-router-dom";
 import Routes from "./routes/Routes.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <div className=" dark:bg-[#252836]">
-        <RouterProvider router={Routes} />
-        <Toaster />
-      </div>
-    </AuthProvider>
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <AuthProvider>
+        <div className=" dark:bg-[#252836]">
+          <RouterProvider router={Routes} />
+          <Toaster />
+        </div>
+      </AuthProvider>
+    </React.StrictMode>
+  </QueryClientProvider>
 );

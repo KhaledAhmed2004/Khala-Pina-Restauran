@@ -5,9 +5,12 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import useAxios from "../hooks/useAxios";
+
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const axios = useAxios();
   const { loginWithEmail, loginWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +28,12 @@ const Login = () => {
     event.preventDefault();
     const toastId = toast.loading("Logging in.....");
     try {
-      await loginWithEmail(email, password);
+      const user = await loginWithEmail(email, password);
+      console.log(user.user.email);
+      const response = await axios.post("/jwt", {
+        email: user.user.email,
+      });
+      console.log(response);
       toast.success("Logged Successfully!", { id: toastId });
       navigate(location?.state ? location?.state : "/");
     } catch (error) {
