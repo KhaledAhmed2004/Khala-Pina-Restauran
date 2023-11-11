@@ -36,10 +36,17 @@ const NavbarBtn = () => {
             {showProfile && (
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-4 shadow menu menu-sm dropdown-content bg-base-100 rounded-box space-y-3"
+                className="mt-3 z-[1] p-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box space-y-2"
               >
-                <li>{user?.displayName}</li>
-                <li>{user?.email}</li>
+                <li>
+                  <Link to="/addItem">Add item</Link>
+                </li>
+                <li>
+                  <Link to="/myAddedItems">My Added items</Link>
+                </li>
+                <li>
+                  <Link to="/myOrder">My ordered</Link>
+                </li>
                 <li>
                   <button
                     onClick={logout}

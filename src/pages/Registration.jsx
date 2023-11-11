@@ -5,10 +5,11 @@ import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
+import useAxios from "../hooks/useAxios";
 
 const Registration = () => {
+  const axios = useAxios();
   const location = useLocation();
-  console.log(location);
   const navigate = useNavigate();
   const { createUser, loginWithGoogle } = useAuth();
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ const Registration = () => {
           displayName: name,
           photoURL: url,
         });
+        axios.post("/userInformation", { name, url, password, email });
         toast.success("Registration Successful", { id: toastId });
         navigate(location?.state ? location?.state : "/");
       } catch (error) {

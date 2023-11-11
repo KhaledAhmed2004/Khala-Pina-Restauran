@@ -7,11 +7,18 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import PrivateRoutes from "./PrivateRoutes";
 import Food from "../pages/Food";
+import Ordering from "../pages/Ordering";
+import AddItem from "../pages/AddItem";
+import MyAddedItems from "../pages/MyAddedItems";
+import Update from "../pages/Update";
+import Error from "../pages/Error";
+import MyOrder from "../pages/MyOrder";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -42,6 +49,34 @@ const Routes = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/food/${params._id}`),
         element: <Food></Food>,
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/myAddedItems/${params.id}`),
+      },
+      {
+        path: "/addItem",
+        element: <AddItem></AddItem>,
+      },
+      {
+        path: "/myAddedItems",
+        element: <MyAddedItems></MyAddedItems>,
+      },
+      {
+        path: "/myOrder",
+        element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/order/:_id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/order/${params._id}`),
+        element: (
+          <PrivateRoutes>
+            <Ordering></Ordering>
+          </PrivateRoutes>
+        ),
       },
     ],
   },

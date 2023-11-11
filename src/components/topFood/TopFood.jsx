@@ -18,7 +18,9 @@ const TopFood = () => {
   });
 
   if (isLoading) {
-    return <Lottie animationData={foodAnimation}></Lottie>;
+    return (
+      <Lottie className="h-[600px]" animationData={foodAnimation}></Lottie>
+    );
   }
 
   console.log("topfoods:", data);

@@ -1,48 +1,58 @@
-import { useLoaderData } from "react-router-dom";
+import { AiFillStar } from "react-icons/ai";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Food = () => {
   const data = useLoaderData();
-  const { foodName } = data;
-  console.log(foodName);
+  const {
+    _id,
+    foodName,
+    rating,
+    foodOrigin,
+    foodCategory,
+    price,
+    quantity,
+    foodImage,
+    description,
+  } = data;
   return (
-    <div className="my-10 mx-auto relative flex flex-col md:flex-row lg:w-full lg:max-w-[48rem] w-[22rem] md:w-[44rem]  rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-      <div className="relative w-full  md:w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border">
+    <div className="my-10 md:h-[400px] mx-auto relative flex flex-col md:flex-row lg:w-full lg:max-w-[48rem] w-[22rem] md:w-[44rem]  rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+      <div className="relative w-full  md:w-2/5 m-0 overflow-hidden text-gray-700 bg-white rounded-r-none shrink-0 rounded-xl bg-clip-border bg-center bg-cover">
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80"
+          src={foodImage}
           alt="image"
           className="object-cover w-full h-full rounded-lg md:rounded-none"
         />
       </div>
-      <div className="p-6">
-        <h6 className="block mb-4 font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-pink-500 uppercase">
-          startups
-        </h6>
-        <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-          Lyft launching cross-platform service this week
-        </h4>
-        <p className="block mb-8 font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
-          Like so many organizations these days, Autodesk is a company in
-          transition. It was until recently a traditional boxed software company
-          selling licenses. Yet its own business model disruption is only part
-          of the story
+      <div className="p-6 space-y-3">
+        <div className="flex justify-between">
+          <h1 className="text-lg text-[#626262] font-normal">{foodCategory}</h1>
+          <h1 className=" text-xl text-[#fe8109] font-semibold flex items-center">
+            <AiFillStar />
+            <span className="text-lg font-medium">{rating}</span>
+          </h1>
+        </div>
+
+        <h5 className="block mb-2 font-sans text-3xl antialiased font-semibold leading-snug tracking-normal text-[#2f2f2f]">
+          {foodName}
+        </h5>
+        <p className="block font-sans text-base antialiased font-normal leading-relaxed text-gray-700">
+          {description}
         </p>
-        <a className="inline-block" href="#">
-          <button
-            className="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-pink-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-pink-500/10 active:bg-pink-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button"
-          >
-            Learn More
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
-            </svg>
-          </button>
-        </a>
+        <p className="block font-medium text-lg  text-[#626262] antialiased leading-relaxed text-inherit">
+          Origin: {foodOrigin}
+        </p>
+        <p className="block font-medium text-lg  text-[#626262] antialiased leading-relaxed text-inherit">
+          Available Quantity : {quantity}
+        </p>
+
+        <h1 className="text-lg text-[#2f2f2f] font-semibold">{`Price: $ ${price}`}</h1>
+
+        <Link
+          to={`/order/${_id}`}
+          className="flex justify-center md:w-[80%] mx-auto bg-green-500 dark:bg-[#ff7a00] transition-all duration-150 ease-in hover:scale-105 dark:hover:bg-[#ea9839] text-white hover:bg-green-600 rounded-full py-2 px-6 uppercase text-lg font-medium"
+        >
+          Order Now
+        </Link>
       </div>
     </div>
   );

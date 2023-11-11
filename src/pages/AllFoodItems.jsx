@@ -116,7 +116,7 @@ const AllFoodItems = () => {
   return (
     <div className="my-10">
       <div className="h-[150px] flex flex-col items-center justify-center">
-        <h1 className="mb-2">Search your Favorite</h1>
+        <h1 className="mb-2">Search your Favorite Food</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-control">
             <div className="input-group">
