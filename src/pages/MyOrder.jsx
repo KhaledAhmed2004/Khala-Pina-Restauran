@@ -4,7 +4,6 @@ import foodAnimation from "../assets/food.json";
 import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
-import { useState } from "react";
 import { auth } from "../config/firebase.config";
 
 const MyOrder = () => {
@@ -13,22 +12,8 @@ const MyOrder = () => {
   const emailAuth = auth?.currentUser?.email;
   console.log(emailAuth);
   const axios = useAxios();
-  //   //   const [email, setEmail] = useState("");
-  //   const getOrderData = async () => {
-  //     // setEmail(user?.email);
-  //     const requestUrl = `/purchaseOrders?email=${user?.email}`;
-  //     console.log("Request URL:", requestUrl);
-  //     const res = await axios.get(requestUrl);
-  //     refetch();
-  //     return res.data;
-  //   };
   const email = auth?.currentUser?.email;
   console.log(email);
-
-  //   const { data, isLoading, refetch } = useQuery({
-  //     queryKey: ["orderData", email],
-  //     queryFn: getOrderData,
-  //   });
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["myAddedItems", email],
     queryFn: async () => {

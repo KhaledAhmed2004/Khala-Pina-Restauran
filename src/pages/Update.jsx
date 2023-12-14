@@ -7,6 +7,7 @@ import { useLoaderData, useNavigate, useNavigation } from "react-router-dom";
 const Update = () => {
   const goTo = useNavigate();
   const loaderData = useLoaderData();
+  console.log(loaderData);
   const {
     _id,
     foodName,
@@ -51,7 +52,7 @@ const Update = () => {
       console.log(send);
       if (send?.data?.modifiedCount > 0) {
         toast.success("Update successfully!", { id: toastId });
-        goTo('/myAddedItems')
+        goTo("/myAddedItems");
       }
     } catch (error) {
       console.log(error);

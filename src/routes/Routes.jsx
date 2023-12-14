@@ -26,11 +26,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/allFoodItems",
-        element: (
-          <PrivateRoutes>
-            <AllFoodItems></AllFoodItems>
-          </PrivateRoutes>
-        ),
+        element: <AllFoodItems></AllFoodItems>,
       },
       {
         path: "/blog",
@@ -47,14 +43,18 @@ const Routes = createBrowserRouter([
       {
         path: "/food/:_id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/food/${params._id}`),
+          fetch(
+            `https://b8-a11-server-side-inky.vercel.app/api/v1/food/${params._id}`
+          ),
         element: <Food></Food>,
       },
       {
         path: "/update/:id",
         element: <Update></Update>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/myAddedItems/${params.id}`),
+          fetch(
+            `https://b8-a11-server-side-inky.vercel.app/api/v1/myAddedItems/${params.id}`
+          ),
       },
       {
         path: "/addItem",
@@ -71,7 +71,9 @@ const Routes = createBrowserRouter([
       {
         path: "/order/:_id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/order/${params._id}`),
+          fetch(
+            `https://b8-a11-server-side-inky.vercel.app/api/v1/order/${params._id}`
+          ),
         element: (
           <PrivateRoutes>
             <Ordering></Ordering>

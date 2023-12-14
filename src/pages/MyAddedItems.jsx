@@ -263,7 +263,7 @@ const MyAddedItems = () => {
     );
   }
 
-  const handleUpdate = async (id) => {};
+  // const handleUpdate = async (id) => {};
 
   const handleDelete = async (id) => {
     const res = await axios.delete(`/myAddedItems/${id}`);
